@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
+     xmlns:sql="http://schemas.microsoft.com/wix/SqlExtension">
+  <Fragment>
+
+    <Binary Id="SQLScriptFile" SourceFile="SQLScripts\WiX.sql"/>
+
+    <ComponentGroup Id="SQLDatabaseComponents">
+      <Component Id="SQLTableCreateSqlAuth" Directory="INSTALLFOLDER" Guid="{D8FE0F7C-665B-4651-AA4A-BD731F938CFB}">
+        <Condition><![CDATA[IS_SQLAUTH = "1"]]></Condition>
+        <util:User Id="SQLUser" Name="[SQL_USERNAME]" Password="[SQL_PASSWORD]"/>
+        <sql:SqlDatabase Id="SQLDb1"
+                         Server="[SQL_SERVERNAME]"
+                         Database="[SQL_DATABASE]"
+                         CreateOnInstall="yes"
+                         User="SQLUser"
+                         ContinueOnError="no">
+          <sql:SqlScript Id="SQLScript1" ExecuteOnInstall="yes" BinaryKey="SQLScriptFile" ContinueOnError="no"></sql:SqlScript>
+        </sql:SqlDatabase>
+
+        <RegistryValue Id="SQLScriptSqlAuthRun" Root="HKCU" Type="integer" Name="ran" Value="1" Key="Software\Microsoft\WiXDemo WebApp\SQL" KeyPath="yes"/>
+      </Component>
+      <Component Id="SQLTableCreateWinAuth" Directory="INSTALLFOLDER" Guid="{2998530C-0FFE-459B-81B0-F6AC3DD25710}">
+        <Condition><![CDATA[IS_SQLAUTH <> "1"]]></Condition>
+        <sql:SqlDatabase Id="SQLDb2"
+                         Server="[SQL_SERVERNAME]"
+                         Database="[SQL_DATABASE]"
+                         CreateOnInstall="yes"
+                         ContinueOnError="no">
+          <sql:SqlScript Id="SQLScript2" ExecuteOnInstall="yes" BinaryKey="SQLScriptFile" ContinueOnError="no"></sql:SqlScript>
+        </sql:SqlDatabase>
+        <RegistryValue Id="SQLScriptWindAuthRun" Root="HKCU" Type="integer" Name="ran" Value="1" Key="Software\Microsoft\WiXDemo WebApp\SQL" KeyPath="yes"/>
+      </Component>
+    </ComponentGroup>
+
+  </Fragment>
+</Wix>

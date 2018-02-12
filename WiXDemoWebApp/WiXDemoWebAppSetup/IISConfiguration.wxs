@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension">
+
+  <Fragment>
+
+    <DirectoryRef Id="WEBSITEFOLDER">
+
+      <!-- Create Web App Pool -->
+      <Component Id="WebAppPoolComponent" Guid="{29886A20-54B1-4434-9532-4E5A2379C4D8}" KeyPath="yes" Permanent="no">
+        <iis:WebAppPool Id="WiXDemoWebAppPool"
+                        Name="WiXDemoApp Pool"
+                        Identity="applicationPoolIdentity"
+                        ManagedPipelineMode="Integrated"
+                        ManagedRuntimeVersion="v4.0" />
+      </Component>
+
+      <!-- Configure Virtual Directory -->
+      <Component Id="WebVirtualDirectoryComponent" Guid="{06DA26D9-588E-4B76-A3F2-B9D11EFF23B0}" KeyPath="yes" >
+        <iis:WebVirtualDir Alias="WiXDemoWebApp"
+                           Id="WiXDemoWebVirtualDirectory"
+                           Directory="WEBSITEFOLDER"
+                           WebSite="WiXDemoWebSite">
+          <iis:WebDirProperties Id="WiXDemoWebVirtualDirectoryProperties"
+                                AnonymousAccess="yes"
+                                BasicAuthentication="no"
+                                WindowsAuthentication="no"/>
+          <iis:WebApplication Id="WiXDemoWebApplication" Name="WiXDemoWebpp" WebAppPool="WiXDemoWebAppPool"/>
+        </iis:WebVirtualDir>
+      </Component>
+
+      <!-- Create IIS Website -->
+      <Component Id="IISWebsiteComponent" Guid="{53858E65-7DB0-4B47-A259-14A9EAEC7B68}" KeyPath="yes">
+        <iis:WebSite Id="WiXDemoWebSite"
+                     Description="WiXDemoWebApp"
+                     Directory="WEBSITEFOLDER"
+                     AutoStart="yes"
+                     StartOnInstall="yes">
+          <iis:WebAddress Id="AllUnassigned" Port="80" />
+        </iis:WebSite>
+      </Component>
+    </DirectoryRef>
+
+    <ComponentGroup Id="WiXDemoIISConfiguration">
+      <ComponentRef Id="WebVirtualDirectoryComponent" />
+      <ComponentRef Id="WebAppPoolComponent" />
+      <ComponentRef Id="IISWebsiteComponent"/>
+    </ComponentGroup>
+
+  </Fragment>
+
+</Wix>

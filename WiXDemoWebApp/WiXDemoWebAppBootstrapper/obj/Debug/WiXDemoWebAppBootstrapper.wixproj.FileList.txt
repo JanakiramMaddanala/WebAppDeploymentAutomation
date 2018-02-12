@@ -1,0 +1,8 @@
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppBootstrapper\bin\Debug\NDP451-KB2859818-Web.exe
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppBootstrapper\bin\Debug\WiXDemoWebAppBootstrapper.exe
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppBootstrapper\bin\Debug\WiXDemoWebAppBootstrapper.wixpdb
+obj\Debug\Bundle.wixobj
+obj\Debug\WiXCustomSettings.wixobj
+obj\Debug\WiXDemoWebAppBootstrapper.wixproj.BindContentsFileList.txt
+obj\Debug\WiXDemoWebAppBootstrapper.wixproj.BindOutputsFileList.txt
+obj\Debug\WiXDemoWebAppBootstrapper.wixproj.BindBuiltOutputsFileList.txt

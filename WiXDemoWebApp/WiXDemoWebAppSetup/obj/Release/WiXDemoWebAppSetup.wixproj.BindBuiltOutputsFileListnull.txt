@@ -1,0 +1,2 @@
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppSetup\bin\Release\WiXDemoWebApp-Release-x86.msi
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppSetup\bin\Release\WiXDemoWebApp-Release-x86.wixpdb

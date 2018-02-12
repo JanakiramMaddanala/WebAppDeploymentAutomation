@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+  <Bundle Name="WixDemoBootstrapper" Version="1.0.0.0" Manufacturer="WixDemo Private Ltd." UpgradeCode="64288c4b-db77-4ec9-b474-9cba28f51803">
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
+      <bal:WixStandardBootstrapperApplication LicenseFile="Resources\WiXDemoLicense.rtf" LogoFile="Resources\WiXDemoLogo.jpg" />
+    </BootstrapperApplicationRef>
+    <Chain>
+      <PackageGroupRef Id="NetFramework451"/>
+      <MsiPackage SourceFile="$(var.WiXDemoWebAppSetup.ProjectDir)Installation\$(var.WiXDemoWebAppSetup.TargetFileName)" DisplayInternalUI="yes"/>
+    </Chain>
+  </Bundle>
+
+  <Fragment>
+    <PropertyRef Id="NETFRAMEWORK45"/>
+    <PackageGroup Id="NetFramework451">
+      <ExePackage Id="NetFrameWork451ExePackage"
+                  SourceFile="Prerequisites\NDP451-KB2859818-Web.exe"
+                  Description="Installing Micorsoft.Net Framework version 4.5.1"
+                  InstallCommand="/q /norestart /passive /showrmui"
+                  DetectCondition="NOT NETFRAMEWORK45 = 378758"
+                  Compressed="no"
+                  DisplayName="Micorsoft.Net Framework version 4.5.1"
+                  PerMachine="yes"
+                  Permanent="yes">
+      </ExePackage>
+    </PackageGroup>
+  </Fragment>
+</Wix>

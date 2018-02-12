@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <UI>
+
+      <Property Id="SQL_AUTHTYPE" Value="1"/>
+
+      <Binary Id="HeaderImage" SourceFile="Resources\TopBanner.bmp"></Binary>
+
+      <Dialog Id="RegisterDlg" Width="350"  Height="250" Title="User Registration">
+        <Control Id="Header" Text="HeaderImage" Type="Bitmap" Height="40" Width="350" X="0" Y="0"/>
+
+        <Control Id="UserNameText" Width="50" Height="15" Type="Text" X="10" Y="60" Text="User Name*"/>
+        <Control Id="UserNameEdit" Width="150" Height="15" X="60" Y="60" Type="Edit" Property="USER_NAME" Text="{100}"/>
+
+        <Control Id="EmailText" Width="50" Height="15" Type="Text" X="10" Y="80" Text="Email"/>
+        <Control Id="EmailEdit" Width="150" Height="15" Type="Edit" X="60" Y="80" Property="EMAIL" Text="{20}"/>
+
+        <Control Id="ContactText" Width="50" Height="15" Type="Text" X="10" Y="100" Text="Contact"/>
+        <Control Id="ContactEdit" Width="150" Height="15" Type="Edit" X="60" Y="100" Property="CONTACT_NUMBER" Text="{10}"/>
+
+        <Control Id="BottomLine" Type="Line" X="0" Y="220" Width="350" Height="0"/>
+        <Control Id="Back" Type="PushButton" X="160" Y="225"
+                   Width="56" Height="17" Text="Back"/>
+        <Control Id="Next" Type="PushButton" X="215" Y="225"
+                   Width="56" Height="17" Default="yes" Text="Next"/>
+      </Dialog>
+
+      <Dialog Id="SQLExecutionDlg" Width="350"  Height="250" Title="SQL Server Configuration">
+        <Control Id="Header" Text="HeaderImage" Type="Bitmap" Height="40" Width="350" X="0" Y="0"/>
+
+        <Control Id="SQLServerNameText" Width="100" Height="15" Type="Text" X="10" Y="60" Text="Server Name"/>
+        <Control Id="SQLServerNameEdit" Width="150" Height="15" X="110" Y="60" Type="Edit" Property="SQL_SERVERNAME" Text="{100}"/>
+
+        <Control Id="SQLDatabaseText" Width="100" Height="15" Type="Text" X="10" Y="80" Text="Database Name"/>
+        <Control Id="SQLDatabaseEdit" Width="150" Height="15" X="110" Y="80" Type="Edit" Property="SQL_DATABASE" Text="{100}"/>
+
+        <Control Id="AuthText" Width="100" Height="15" Type="Text" X="10" Y="100" Text="Authenticaiton Type"/>
+
+        <Control Id="AuthenticationTypes" Width="150" Height="40" X="110" Y="100" Type="RadioButtonGroup" Property="SQL_AUTHTYPE">
+          <RadioButtonGroup Property="SQL_AUTHTYPE">
+            <RadioButton  Width="150" Height="15" X="0" Y="0" Text="Windows Authentication" Value="0"/>
+            <RadioButton  Width="150" Height="15" X="0" Y="20" Text="SQL Server Authentication" Value="1"/>
+          </RadioButtonGroup>
+        </Control>
+
+        <Control Id="SQLUserNameText" Width="100" Height="15" Type="Text" X="10" Y="150" Text="User Name">
+          <Condition Action="disable"><![CDATA[SQL_AUTHTYPE = "0"]]></Condition>
+          <Condition Action="enable"><![CDATA[SQL_AUTHTYPE = "1"]]></Condition>
+        </Control>
+
+        <Control Id="SQLUserNameEdit" Width="150" Height="15" X="110" Y="150" Type="Edit" Property="SQL_USERNAME" Text="{100}">
+          <Condition Action="disable"><![CDATA[SQL_AUTHTYPE = "0"]]></Condition>
+          <Condition Action="enable"><![CDATA[SQL_AUTHTYPE = "1"]]></Condition>
+        </Control>
+
+        <Control Id="SQLPasswordText" Width="100" Height="15" Type="Text" X="10" Y="170" Text="Password">
+          <Condition Action="disable"><![CDATA[SQL_AUTHTYPE = "0"]]></Condition>
+          <Condition Action="enable"><![CDATA[SQL_AUTHTYPE = "1"]]></Condition>
+        </Control>
+        <Control Id="SQLPasswordEdit" Width="150" Height="15" Type="Edit" X="110" Y="170" Property="SQL_PASSWORD" Text="{20}" Password="yes">
+          <Condition Action="disable"><![CDATA[SQL_AUTHTYPE = "0"]]></Condition>
+          <Condition Action="enable"><![CDATA[SQL_AUTHTYPE = "1"]]></Condition>
+        </Control>
+
+        <Control Id="Test" Type="PushButton" X="110" Y="190"
+                   Width="80" Height="17" Text="Test Connection">
+          <Publish Event="DoAction" Value="SQLConnectionCheckAction">1</Publish>
+          <Publish Event="SpawnDialog" Value="PopupDlg">1</Publish>
+        </Control>
+
+        <Control Id="BottomLine" Type="Line" X="0" Y="220" Width="350" Height="0"/>
+        <Control Id="Back" Type="PushButton" X="160" Y="225"
+                   Width="56" Height="17" Text="Back"/>
+        <Control Id="Next" Type="PushButton" X="215" Y="225"
+                   Width="56" Height="17" Default="yes" Text="Next"/>
+      </Dialog>
+
+      <Dialog Id="PopupDlg" Width="220" Height="100">
+        <Control Id="PopupText" Type="Text" Text="[ERROR_MESSAGE]"
+                 Height="60" Width="200" X="10" Y="10"/>
+        <Control Id="PopupOkButton" Type="PushButton" Text="Ok"
+                 Height="17" Width="56" X="80" Y="70">
+          <Publish Event="EndDialog" Value="Return" />
+        </Control>
+      </Dialog>
+
+      <Dialog Id="FatalErrorDlg" Width="370" Height="270" Title="WiXDemo WebApp">
+        <Control Id="Header" Text="HeaderImage" Type="Bitmap" Height="40" Width="370" X="0" Y="0"/>
+        <Control Id="FatalErrorDescription" Type="Text" X="40" Y="70" Width="290" Height="80"
+                 Text="[ProductName] setup exited with an unhandled error. Please contact administrator." />
+        <Control Id="BottomLine" Type="Line" X="0" Y="235" Width="370" Height="0"/>
+        <Control Id="Finish" Type="PushButton" X="250" Y="243" Width="56" Height="17" Default="yes" Cancel="yes" Text="Finish">
+          <Publish Event="EndDialog" Value="Exit" />
+        </Control>
+      </Dialog>
+
+      <Dialog Id="UserExitDlg" Width="370" Height="270" Title="WiXDemo WebApp">
+        <Control Id="Header" Text="HeaderImage" Type="Bitmap" Height="40" Width="370" X="0" Y="0"/>
+        <Control Id="UserExitDescription" Type="Text" X="40" Y="70" Width="290" Height="80"
+                 Text="[ProductName] setup was cancelled by the user. Please try again later. Thank you!" />
+        <Control Id="BottomLine" Type="Line" X="0" Y="230" Width="370" Height="0"/>
+        <Control Id="Finish" Type="PushButton" X="250" Y="243" Width="56" Height="17" Default="yes" Cancel="yes" Text="Finish">
+          <Publish Event="EndDialog" Value="Exit" />
+        </Control>
+      </Dialog>
+
+      <Dialog Id="IISSettingsDlg" Width="350" Height="250" Title="IIS Configuration">
+        <Control Id="Header" Text="HeaderImage" Type="Bitmap" Height="40" Width="350" X="0" Y="0"/>
+        <Control Id="Description" Type="Text" X="20" Y="50" Width="210" Height="15"
+                 Text="Virtual Directory:" />
+        <Control Id="BottomLine" Type="Line" X="0" Y="220" Width="350" Height="0"/>
+        <Control Id="Finish" Type="PushButton" X="215" Y="225" Width="56" Height="17" Default="yes" Cancel="yes" Text="Finish">
+          <Publish Event="EndDialog" Value="Exit" />
+        </Control>
+      </Dialog>
+
+    </UI>
+  </Fragment>
+</Wix>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  
+	<Fragment>
+    <WixVariable Id="WixUILicenseRtf" Value="Resources\WiXDemo.rtf" />
+    <WixVariable Id="WixUIDialogBmp" Value="Resources\SmartBackground.bmp"/>
+    <WixVariable Id="WixUIBannerBmp" Value="Resources\TopBanner.bmp"/>
+
+    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Thank you for installing the product." />
+    
+    <Icon Id="WiXDemoWebAppShortcutIcon" SourceFile="Resources\WiXDemoShortcut.ico"/>
+
+    <Property Id="ARPPRODUCTICON" Value="WiXDemoWebAppShortcutIcon" />
+    <Property Id="ARPHELPLINK" Value="https://github.com/JanakiramMaddanala/Datastructures-and-Algorithms"/>
+    <Property Id="ARPURLINFOABOUT" Value="https://github.com/JanakiramMaddanala/"/>
+    <Property Id="ARPURLUPDATEINFO" Value="https://github.com/JanakiramMaddanala/Datastructures-and-Algorithms"/>
+    <Property Id="ARPNOREPAIR" Value="1"/>
+    
+	</Fragment>
+  
+</Wix>

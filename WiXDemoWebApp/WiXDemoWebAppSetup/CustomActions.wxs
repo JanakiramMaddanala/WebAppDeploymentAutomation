@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <Fragment>
+
+    <Binary Id="WiXDemoWebApp.CustomAction"  SourceFile="$(var.WiXDemoWebApp.CustomAction.TargetDir)$(var.WiXDemoWebApp.CustomAction.TargetName).CA.dll"/>
+
+    <CustomAction Id="UserRegistrationAction" BinaryKey="WiXDemoWebApp.CustomAction" DllEntry="SaveUserInfo" Execute="immediate" Return="check"/>
+    
+    <CustomAction Id="UserCreatedCheckAction" Error="[ERROR_MESSAGE]"/>
+
+    <CustomAction Id="SQLExecuteSPAction" BinaryKey="WiXDemoWebApp.CustomAction" DllEntry="ExecuteInitialDbSetupSP" Execute="immediate" Return="check"/>
+
+    <CustomAction Id="SQLSPExecutedAction" Error="[ERROR_MESSAGE]"/>
+
+    <CustomAction Id="SQLConnectionCheckAction" BinaryKey="WiXDemoWebApp.CustomAction" DllEntry="IsConnectedToSQLServer" Execute="immediate" Return="check"/>
+
+  </Fragment>
+
+</Wix>

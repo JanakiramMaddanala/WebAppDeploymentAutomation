@@ -1,0 +1,16 @@
+obj\Debug\AppShortucts.wixobj
+obj\Debug\Common.wixobj
+obj\Debug\CustomActions.wixobj
+obj\Debug\CustomUI.wixobj
+obj\Debug\Directories.wixobj
+obj\Debug\IISConfiguration.wixobj
+obj\Debug\Product.wixobj
+obj\Debug\SQLConfiguration.wixobj
+obj\Debug\UIDialogs.wixobj
+obj\Debug\WiXCustomSettings.wixobj
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppSetup\bin\Debug\WiXDemoWebApp-Debug-x86.msi
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppSetup\bin\Debug\WiXDemoWebApp-Debug-x86.wixpdb
+obj\Debug\WiXDemoWebAppSetup.wixproj.BindContentsFileListnull.txt
+obj\Debug\WiXDemoWebAppSetup.wixproj.BindOutputsFileListnull.txt
+obj\Debug\WiXDemoWebAppSetup.wixproj.BindBuiltOutputsFileListnull.txt
+obj\Debug\WebAppComponents.wixobj

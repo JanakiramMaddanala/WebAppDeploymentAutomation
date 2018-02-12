@@ -1,0 +1,10 @@
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebApp.CustomAction\bin\Release\WiXDemoWebApp.CustomAction.dll
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebApp.CustomAction\bin\Release\WiXDemoWebApp.CustomAction.CA.dll
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebApp.CustomAction\bin\Release\WiXDemoWebApp.CustomAction.pdb
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebApp.CustomAction\bin\Release\Microsoft.Deployment.WindowsInstaller.dll
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebApp.CustomAction\bin\Release\System.Data.SqlClient.dll
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebApp.CustomAction\bin\Release\Microsoft.Deployment.WindowsInstaller.xml
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebApp.CustomAction\obj\x86\Release\WiXDemoWebApp.CustomAction.csproj.CoreCompileInputs.cache
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebApp.CustomAction\obj\x86\Release\WiXDemoWebApp.CustomAction.dll
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebApp.CustomAction\obj\x86\Release\WiXDemoWebApp.CustomAction.pdb
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebApp.CustomAction\obj\x86\Release\WiXDemoWebApp.CustomAction.csprojResolveAssemblyReference.cache

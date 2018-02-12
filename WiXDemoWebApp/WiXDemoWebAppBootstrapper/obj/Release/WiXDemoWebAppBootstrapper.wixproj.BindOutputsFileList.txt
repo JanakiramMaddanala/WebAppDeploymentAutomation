@@ -1,0 +1,3 @@
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppBootstrapper\bin\Release\NDP451-KB2859818-Web.exe
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppBootstrapper\bin\Release\WiXDemoWebAppBootstrapper.exe
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppBootstrapper\bin\Release\WiXDemoWebAppBootstrapper.wixpdb

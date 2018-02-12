@@ -1,0 +1,14 @@
+IF OBJECT_ID('dbo.WiXUser') IS NOT NULL
+	DROP TABLE WiXUser
+
+CREATE TABLE WiXUser
+(
+	ID INT,
+	NAME VARCHAR(50)
+)
+
+INSERT INTO WiXUser(ID,NAME) VALUES 
+(1,'1WiXUser1'),
+(2,'1WiXUser2'),
+(3,'1WiXUser3'),
+(4,'1WiXUser4')

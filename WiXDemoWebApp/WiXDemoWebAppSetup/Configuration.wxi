@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+
+  <Property Id="USER_NAME" Value=""/>
+  <Property Id="EMAIL" Value=""/>
+  <Property Id="CONTACT_NUMBER" Value=""/>
+  <Property Id="IS_USER_CREATED" Value="0"/>
+
+  <Property Id="SQL_USERNAME" Value="sa"/>
+  <Property Id="SQL_PASSWORD" Value="ram143@sql"/>
+  <Property Id="SQL_SERVERNAME" Value="USHYDMADDANALA2"/>
+  <Property Id="SQL_DATABASE" Value="WiXTest"/>
+  <Property Id="IS_WINDOWSAUTH" Value="0"/>
+  <Property Id="IS_SQLAUTH" Value="0"/>
+  <Property Id="IS_CONNECTED" Value="0"/>
+  <Property Id="CONNECTION_STRING" Value=""/>
+
+
+</Include>

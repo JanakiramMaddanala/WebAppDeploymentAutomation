@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  
+  <Fragment>
+    <Property Id="SHORTCUT_URL" Value="http://localhost:80/" />
+    
+    <ComponentGroup Id="ProgramMenuShortcutComponents" Directory="PROGRAMMENUFOLDER">
+      <Component Id="ProgramMenuShortcutComponent" Guid="{CB380C15-F87C-4B2C-92DB-14C63EA00E54}">
+        <util:InternetShortcut Id="WebAppInternetShorcut"  
+                               Name="!(loc.ProductName)"
+                               Target="[SHORTCUT_URL]"
+                               Type="link" />
+        <RemoveFolder  Id="PROGRAMMENUFOLDER" On="uninstall"/>
+        <RegistryValue Root="HKCU"  Key="Software\Microsoft\WiXDemo WebApp\Shorcuts" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="DesktopShorcutComponents" Directory="DesktopFolder">
+      <Component Id="DesktopShortcutComponet" Guid="{F9692409-95DC-4102-BED1-B7A099C8D2B8}">   
+        <Shortcut Id="WiXDemoWebAppDesktopShortcut" Name="!(loc.ProductName)" Description="Desktop Shortcut for WiXDemo"
+                  Target="[SHORTCUT_URL]"
+                  WorkingDirectory="WEBSITEFOLDER" 
+                  Icon="WiXDemoWebAppShortcutIcon"/>     
+        <RegistryValue Root="HKCU"  Key="Software\Microsoft\WiXDemo\Desktop" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </ComponentGroup>
+
+  </Fragment>
+  
+</Wix>

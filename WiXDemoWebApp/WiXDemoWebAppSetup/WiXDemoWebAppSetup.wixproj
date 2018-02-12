@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" InitialTargets="EnsureWixToolsetInstalled" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.10</ProductVersion>
+    <ProjectGuid>f7746764-79a4-4940-85be-a54d6d3713e5</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>WiXDemoWebApp-$(Configuration)-$(Platform)</OutputName>
+    <OutputType>Package</OutputType>
+    <Cultures>;</Cultures>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Debug</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AppShortucts.wxs" />
+    <Compile Include="Common.wxs" />
+    <Compile Include="CustomActions.wxs" />
+    <Compile Include="CustomUI.wxs" />
+    <Compile Include="Directories.wxs" />
+    <Compile Include="IISConfiguration.wxs" />
+    <Compile Include="Product.wxs" />
+    <Compile Include="SQLConfiguration.wxs" />
+    <Compile Include="UIDialogs.wxs" />
+    <Compile Include="WebAppComponents.wxs" />
+    <Compile Include="WiXCustomSettings.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ProductInfo.wxl" />
+    <EmbeddedResource Include="LocalSettings.wxl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixIIsExtension">
+      <HintPath>$(WixExtDir)\WixIIsExtension.dll</HintPath>
+      <Name>WixIIsExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixSqlExtension">
+      <HintPath>$(WixExtDir)\WixSqlExtension.dll</HintPath>
+      <Name>WixSqlExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WiXDemoWebApp.CustomAction\WiXDemoWebApp.CustomAction.csproj">
+      <Name>WiXDemoWebApp.CustomAction</Name>
+      <Project>{20c3858a-4a8a-4bc2-8b05-8ef09b03aa44}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configuration.wxi" />
+    <Content Include="Resources\SmartBackground.bmp" />
+    <Content Include="Resources\TopBanner.bmp" />
+    <Content Include="Resources\WiXDemo.rtf" />
+    <Content Include="Resources\WiXDemoShortcut.ico" />
+    <Content Include="SQLScripts\WiX.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SQLScripts" />
+    <Folder Include="Resources" />
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
+  <Target Name="EnsureWixToolsetInstalled" Condition=" '$(WixTargetsImported)' != 'true' ">
+    <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see http://wixtoolset.org/releases/" />
+  </Target>
+  <UsingTask AssemblyFile="packages/MSBuild.Extension.Pack.1.8.0/tools/net40/MSBuild.ExtensionPack.dll" TaskName="Assembly"/>
+  <UsingTask AssemblyFile="packages/MSBuild.Extension.Pack.1.8.0/tools/net40/MSBuild.ExtensionPack.dll" TaskName="Zip"/>
+  <Target Name="BeforeBuild">
+    <PropertyGroup>
+      <DefineConstants>BasePath=..\WiXDemoWebApp\bin\Release\PublishOutput</DefineConstants>
+    </PropertyGroup>
+    <HeatDirectory OutputFile="WebAppComponents.wxs" Directory="..\WiXDemoWebApp\bin\Release\PublishOutput" DirectoryRefId="WEBSITEFOLDER" ComponentGroupName="WebComponents" AutogenerateGuids="false" SuppressCom="true" SuppressFragments="true" SuppressRegistry="true" SuppressRootDirectory="true" ToolPath="$(WixToolPath)" GenerateGuidsNow="true" PreprocessorVariable="var.BasePath" />
+  </Target>
+  <Target Name="AfterBuild">
+    <Exec Command="if not exist Installation mkdir Installation" />
+    <Exec Command="move bin\$(Configuration)\$(OutputName).msi Installation\$(OutputName).msi" />
+  </Target>
+</Project>

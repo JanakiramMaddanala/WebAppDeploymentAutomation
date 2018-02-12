@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  
+	<Fragment>
+    
+    <Icon Id="WiXDemoWebAppShortcutIcon" SourceFile="Resources\WiXDemoShortcut.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="WiXDemoWebAppShortcutIcon" />
+    <Property Id="ARPHELPLINK" Value="https://github.com/JanakiramMaddanala/Datastructures-and-Algorithms"/>
+    <Property Id="ARPURLINFOABOUT" Value="https://github.com/JanakiramMaddanala/"/>
+    <Property Id="ARPURLUPDATEINFO" Value="https://github.com/JanakiramMaddanala/Datastructures-and-Algorithms"/>
+    
+	</Fragment>
+  
+</Wix>

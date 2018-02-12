@@ -1,0 +1,2 @@
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppSetup\Installation\WiXDemoWebApp-Debug-x86.msi
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppBootstrapper\Prerequisites\NDP451-KB2859818-Web.exe

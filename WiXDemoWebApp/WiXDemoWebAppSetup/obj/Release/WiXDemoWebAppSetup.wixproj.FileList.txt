@@ -1,0 +1,16 @@
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppSetup\bin\Release\WiXDemoWebApp-Release-x86.msi
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppSetup\bin\Release\WiXDemoWebApp-Release-x86.wixpdb
+obj\Release\AppShortucts.wixobj
+obj\Release\Common.wixobj
+obj\Release\CustomActions.wixobj
+obj\Release\CustomUI.wixobj
+obj\Release\Directories.wixobj
+obj\Release\IISConfiguration.wixobj
+obj\Release\Product.wixobj
+obj\Release\SQLConfiguration.wixobj
+obj\Release\UIDialogs.wixobj
+obj\Release\WebAppComponents.wixobj
+obj\Release\WiXCustomSettings.wixobj
+obj\Release\WiXDemoWebAppSetup.wixproj.BindContentsFileListnull.txt
+obj\Release\WiXDemoWebAppSetup.wixproj.BindOutputsFileListnull.txt
+obj\Release\WiXDemoWebAppSetup.wixproj.BindBuiltOutputsFileListnull.txt

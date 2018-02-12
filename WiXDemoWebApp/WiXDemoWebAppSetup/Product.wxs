@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Name="!(loc.ProductName)"
+           Language="1033"
+           Version="1.0.0.0"
+           Manufacturer="!(loc.ProductManufacturer)"
+           UpgradeCode="{2281F952-710F-449D-B697-161E56BD66CE}">
+
+    <Package InstallerVersion="200"
+             Compressed="yes"
+             InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+
+    <MediaTemplate EmbedCab="yes" />
+
+    <UIRef Id="WiXDemoUI"/>
+
+    <PropertyRef Id="IISMAJORVERSION" />
+
+    <Condition Message="Install requires IIS Version [IISMAJORVERSION].">
+      <![CDATA[Installed OR (IISMAJORVERSION AND (IISMAJORVERSION = "#10" OR IISMAJORVERSION = "#7"))]]>
+    </Condition>
+
+    <Feature Id="ProductFeature" Title="WiXDemoWebAppSetup" Level="1">
+      <ComponentGroupRef Id="SQLDatabaseComponents"/>
+      <ComponentGroupRef Id="WiXDemoIISConfiguration" />
+      <ComponentGroupRef Id="WebComponents" />
+      <ComponentGroupRef Id="ProgramMenuShortcutComponents" />
+      <ComponentGroupRef Id="DesktopShorcutComponents" />
+    </Feature>
+
+
+    <InstallExecuteSequence>
+      <Custom Action="UserRegistrationAction" After="CostFinalize">NOT Installed</Custom>
+      <Custom Action="UserCreatedCheckAction" After="UserRegistrationAction">
+        <![CDATA[IS_USER_CREATED = "0" AND NOT Installed]]>
+      </Custom>
+      <Custom Action="SQLExecuteSPAction" After="UserCreatedCheckAction">NOT Installed</Custom>
+      <Custom Action="SQLSPExecutedAction" After="SQLExecuteSPAction">
+        <![CDATA[IS_CONNECTED = "0" AND NOT Installed]]>
+      </Custom>
+    </InstallExecuteSequence>
+
+    <InstallUISequence>
+      <Show Dialog="FatalErrorDlg" OnExit="error" />
+      <Show Dialog="UserExitDlg" OnExit="cancel" />
+    </InstallUISequence>
+
+    <AdminUISequence>
+      <Show Dialog="FatalErrorDlg" OnExit="error" />
+      <Show Dialog="UserExitDlg" OnExit="cancel" />
+    </AdminUISequence>
+
+  </Product>
+
+
+</Wix>

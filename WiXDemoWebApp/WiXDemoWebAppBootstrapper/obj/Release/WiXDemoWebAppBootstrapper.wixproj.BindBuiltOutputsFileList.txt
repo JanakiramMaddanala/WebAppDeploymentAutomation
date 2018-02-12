@@ -1,0 +1,2 @@
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppBootstrapper\bin\Release\WiXDemoWebAppBootstrapper.exe
+C:\Users\jmaddanala\Desktop\WiX\Project\WiXDemoWebApp\WiXDemoWebAppBootstrapper\bin\Release\WiXDemoWebAppBootstrapper.wixpdb
